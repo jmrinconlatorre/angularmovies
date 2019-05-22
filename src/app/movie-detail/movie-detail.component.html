@@ -1,3 +1,23 @@
-<p>
-  movie-detail works!
-</p>
+
+<h3  *ngIf="!movieData">no data yet</h3>
+<div class="movieDetail" *ngIf="movieData"   [style.background-image]=" 'url(https://image.tmdb.org/t/p/original' + movieData.backdrop_path + ')' ">
+    <div>
+      <div class="generos">
+        <span *ngFor="let genre of movieData.genres" >{{genre.name}}</span>
+      </div>
+      <h1>{{movieData.title}}</h1>
+      <div class="rating">{{movieData.vote_average}} <span>/ {{movieData.vote_count}}</span></div>
+      <h3>{{movieData.release_date}}</h3>
+      <p>{{movieData.overview}}</p>
+      <h5>Revenue: ${{movieData.revenue}}</h5>
+      <h5>Budget: ${{movieData.budget}}</h5>
+    </div>
+    <div>
+      <img src="https://image.tmdb.org/t/p/w500/{{movieData.poster_path}}" alt="">
+    </div>
+</div>
+    <!-- <pre>
+      {{movieData | json}}
+    </pre> -->
+
+<app-movies-display [filmsArray]="similarMovies"></app-movies-display>

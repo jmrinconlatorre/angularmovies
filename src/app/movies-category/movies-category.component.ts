@@ -20,10 +20,11 @@ export class MoviesCategoryComponent implements OnInit {
 
       if (this.validCategories.includes(params.category)) {
         // get movies
-        this.api.getCategory(params.category).subscribe((response:any) => {
+        this.api.getCategory(params.category).subscribe((response: any) => {
           this.movies = response.results;
           console.log(response);
         })
+
 
       } else {
         // redirect to /movies/popular
