@@ -1,3 +1,16 @@
-<p>
-  movies-category works!
-</p>
+<section class="moviesCategory">
+  <h1>
+     {{category | uppercase}} MOVIES
+  </h1>
+  <div class="movies">
+
+<!-- 
+    <div class="movie" *ngFor="let movie of movies">
+        <pre>{{movie | json}}</pre>
+    </div> -->
+
+    <app-movies-display [filmsArray]="movies"></app-movies-display>
+
+
+  </div>
+</section>
