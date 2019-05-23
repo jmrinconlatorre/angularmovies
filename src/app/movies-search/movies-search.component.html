@@ -1,0 +1,7 @@
+
+  <!-- bindea en 2 direcciones con ngModel para el input -->
+  <input type="text" [(ngModel)]="query"  (keyup.enter)="search()" placeholder="search">
+
+  <h1  *ngIf="moviesFound.length === 0 && query">no results</h1>
+  
+  <app-movies-display [filmsArray]="moviesFound"></app-movies-display>

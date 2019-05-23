@@ -11,6 +11,8 @@ export class MoviesCategoryComponent implements OnInit {
   category: string;
   validCategories = ['top_rated', 'upcoming', 'popular'];
   movies : object[];
+  page = 1;
+  rawCategory: string;
 
   constructor(private route: ActivatedRoute, private router: Router , private api: ApiMoviesService ) {}
 
@@ -30,6 +32,12 @@ export class MoviesCategoryComponent implements OnInit {
         // redirect to /movies/popular
         this.router.navigate(['/movies/popular'])
       }
+    });
+  }
+  moreMovies() {
+    this.api.getCategory(this.rawCategory, this.page + 1).subscribe((response: any) => {
+      this.page++;
+      this.movies = [...this.movies , ...response.results];
     });
   }
 }

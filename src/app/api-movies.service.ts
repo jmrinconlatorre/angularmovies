@@ -10,8 +10,8 @@ export class ApiMoviesService {
 
   constructor(private http: HttpClient) {}
 
-  endpointCategory(cat) {
-    return `${this.apiBaseUrl}movie/${cat}?api_key=${this.apiKey}`;
+  endpointCategory(cat, page) {
+    return `${this.apiBaseUrl}movie/${cat}?api_key=${this.apiKey}&page=${page}`;
   }
   endpointMovie(id) {
     return `${this.apiBaseUrl}movie/${id}?api_key=${this.apiKey}`;
@@ -20,8 +20,8 @@ export class ApiMoviesService {
     return `${this.apiBaseUrl}movie/${id}/similar?api_key=${this.apiKey}`;
   }
 
-  getCategory(cat) {
-    let url = this.endpointCategory(cat);
+  getCategory(cat, page = 1) {
+    let url = this.endpointCategory(cat, page);
     return this.http.get(url);
   }
   getMovie(id) {
@@ -30,6 +30,11 @@ export class ApiMoviesService {
   }
   getSimilar(id) {
     let url = this.endpointSimilar(id);
+    return this.http.get(url);
+  }
+
+  searchMovies(query) {
+    let url = `${this.apiBaseUrl}search/movie?api_key=${this.apiKey}&query=${query}&language=es-ES`;
     return this.http.get(url);
   }
 }

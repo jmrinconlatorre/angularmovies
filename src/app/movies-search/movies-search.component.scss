@@ -1,0 +1,17 @@
+:host{//es el componente en si mismo, el grapper
+    background: grey;
+    color: white;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: center;
+    
+    input{
+        all:unset;
+        font-size: 2em;
+        text-align: center;
+    }
+
+
+}
